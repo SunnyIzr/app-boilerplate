@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     namespace :v1 do
+      get '/home' => 'static_pages#home'
+      get '/login' => 'static_pages#login'
+      get '/logout' => 'static_pages#logout'
+
       mount Sidekiq::Web => '/sidekiq'
     end
   end
