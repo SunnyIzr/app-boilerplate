@@ -22,6 +22,13 @@ Follow steps here: https://docs.docker.com/samples/rails/
 `dco run frontend npm install @mui/material @emotion/react @emotion/styled`
 `dco run frontend npm install @fontsource/roboto` (Be sure to import fonts in entrypoint)
 
+5. Add sidekiq
+- Add `gem "sidekiq"` to Gemfile
+- Update config/application.rb with `config.active_job.queue_adapter = :sidekiq`
+- Add sidekiq initializer
+- Add sidekiq routes
+- Update docker-compose.yml
+
 NOTE: The following events will require a docker re-build:
 - Adding/removing gems from Gemfile
 - Altering appRouter

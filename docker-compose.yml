@@ -6,6 +6,26 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
+  redis:
+    container_name: redis
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
+  sidekiq:
+    container_name: sidekiq
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: ./backend
+    command: bundle exec sidekiq
+    volumes:
+      - '.:/myapp'
+      - '/myapp/tmp' # don't mount tmp directory
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
   backend:
     container_name: backend
     build: ./backend
@@ -16,6 +36,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
   frontend:
     container_name: frontend
     build: ./frontend
@@ -38,3 +61,6 @@ services:
       VIRTUAL_PORT: 8080
     ports:
       - 8080:8080
+volumes:
+  redis:
+  postgres:
