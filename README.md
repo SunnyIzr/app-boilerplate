@@ -18,6 +18,9 @@ Follow steps here: https://docs.docker.com/samples/rails/
 - NOTE: You may have to remove the /tmp folder if you have db issues when creating the database
 - NOTE: You'll have to namespace rails routes to api/v1 in order to view on NGINX server
 
+4. Add MUI and fonts by running the following:
+`dco run frontend npm install @mui/material @emotion/react @emotion/styled`
+`dco run frontend npm install @fontsource/roboto` (Be sure to import fonts in entrypoint)
 
 NOTE: The following events will require a docker re-build:
 - Adding/removing gems from Gemfile
