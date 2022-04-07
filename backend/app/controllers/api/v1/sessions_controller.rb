@@ -1,11 +1,9 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: login_params[:email])
+    if @user && @user.authenticate(login_params[:password])
       session[:user_id] = @user.id
-      render json: {
-        message: "Welcome #{@user.first_name}."
-      }
+      render json: @user
     else  
       render json: {
         errors: "Invalid credentials"
@@ -18,5 +16,11 @@ class Api::V1::SessionsController < ApplicationController
     render json: {
       message: "Logout successful."
     }
+  end
+
+  private
+
+  def login_params
+    params.require(:user).permit(:email, :password)
   end
 end

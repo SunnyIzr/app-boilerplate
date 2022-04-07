@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import LogoutLink from '../features/auth/LogoutLink';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -27,6 +28,7 @@ const Nav = () => {
       >
         <ButtonGroup size="large" aria-label="large button group">
           <Link to="/"><Button>Home</Button></Link>
+          <LogoutLink />
         </ButtonGroup>
       </Box>
     </div>
