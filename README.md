@@ -14,6 +14,7 @@ Follow steps here: https://docs.docker.com/samples/rails/
 3. Copy rails files from rails app created in Step 1 to backend folder. Some notes:
 - Copy .gitignore and .dockerignore files from boilerplate
 - Remove docker-compose.yml from rails folder
+- Copy config/database.yml from boilerplate
 - Update Dockerfile from boilerplate
 - NOTE: You may have to remove the /tmp folder if you have db issues when creating the database
 - NOTE: You'll have to namespace rails routes to api/v1 in order to view on NGINX server
