@@ -8,10 +8,19 @@ Follow steps here: https://docs.docker.com/samples/rails/
 - Change Dockerfile to Ruby 3.0.0
 - Run `docker-compose run --no-deps web rails new . --force -T --database=postgresql --api`
 
-2. Pull in boilerplate that contains React setup (/`frontend`), Nginx config (`/config`) and replace `docker-compose.yml`. React setup contains:
+2. Pull in boilerplate that contains React setup (/`frontend`), Nginx config (`/config`), tmp (`/tmp`) make sure this is empty though and replace `docker-compose.yml`. React setup contains:
 - Vite server
 - Redux toolkit
 - React Router
+- NOTE: May need to alter frontend Dockerfile to install vite globally `RUN npm install -g vite`
+
+**CHECK**
+Run the following
+`$ dco build`
+`$ dco up`
+
+Make sure the following is working:
+- 
 
 3. Copy rails files from rails app created in Step 1 to backend folder. Some notes:
 - Copy `.gitignore`, `/backend/.gitignore` and `/backend/.dockerignore` files from boilerplate
