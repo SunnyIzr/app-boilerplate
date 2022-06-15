@@ -31,7 +31,7 @@ const LoginPage = () => {
     if ("data" in result){
       const user = result.data
       dispatch(setUser(user));
-      // navigate(from)
+      navigate(from)
     }
   }
 
