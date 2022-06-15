@@ -32,3 +32,8 @@ Follow steps here: https://docs.docker.com/samples/rails/
 NOTE: The following events will require a docker re-build:
 - Adding/removing gems from Gemfile
 - Altering appRouter
+
+
+### To Run
+`dco build`
+`dco up`
