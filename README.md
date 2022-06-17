@@ -40,7 +40,7 @@ Make sure the following is working:
 
 4. Add MUI and fonts by running the following:
 `dco run frontend npm install @mui/material @emotion/react @emotion/styled`
-`dco run frontend npm install @fontsource/roboto` (Be sure to import fonts in entrypoint)
+`dco run frontend npm install @fontsource/roboto` (Be sure to [import fonts in entrypoint](https://github.com/SunnyIzr/app-boilerplate/blob/main/frontend/src/index.tsx#L12))
 
 5. Add sidekiq
 - Add `gem "sidekiq"` to Gemfile
