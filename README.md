@@ -13,14 +13,19 @@ Follow steps here: https://docs.docker.com/samples/rails/
 - Redux toolkit
 - React Router
 - NOTE: May need to alter frontend Dockerfile to install vite globally `RUN npm install -g vite`
+- NOTE: Make sure that node_modules is not copied over from frontend folder
+- NOTE: May need to manually run `$ dco run frontend npm install` which will install packages on container
 
-**CHECK**
+_Check_
 Run the following
-`$ dco build`
-`$ dco up`
+- `$ dco build`
+- `$ dco up`
 
 Make sure the following is working:
-- 
+- `http://localhost:4000/`: This should show React frontend
+- `http://localhost:4000/`: This should show Rails backend
+- `http://localhost:8080/`: This should show React frontend on NGinx server
+- `http://localhost:8080/api`: This should show Rails backend on NGinx server
 
 3. Copy rails files from rails app created in Step 1 to backend folder. Some notes:
 - Copy `.gitignore`, `/backend/.gitignore` and `/backend/.dockerignore` files from boilerplate
