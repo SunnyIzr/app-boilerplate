@@ -16,6 +16,14 @@ Follow steps here: https://docs.docker.com/samples/rails/
 - NOTE: Make sure that node_modules is not copied over from frontend folder
 - NOTE: May need to manually run `$ dco run frontend npm install` which will install packages on container
 
+3. Copy rails files from rails app created in Step 1 to backend folder. Some notes:
+- Copy `.gitignore`, `/backend/.gitignore` and `/backend/.dockerignore` files from boilerplate
+- Remove docker-compose.yml from rails folder
+- Copy config/database.yml from boilerplate (Make sure to replace db name)
+- Update Dockerfile from boilerplate
+- NOTE: You may have to remove the /tmp folder if you have db issues when creating the database
+- NOTE: You'll have to namespace rails routes to api/v1 in order to view on NGINX server
+
 ***
 #### Check
 Run the following
@@ -29,14 +37,6 @@ Make sure the following is working:
 - `http://localhost:8080/api`: This should show Rails backend on NGinx server
 
 ***
-
-3. Copy rails files from rails app created in Step 1 to backend folder. Some notes:
-- Copy `.gitignore`, `/backend/.gitignore` and `/backend/.dockerignore` files from boilerplate
-- Remove docker-compose.yml from rails folder
-- Copy config/database.yml from boilerplate (Make sure to replace db name)
-- Update Dockerfile from boilerplate
-- NOTE: You may have to remove the /tmp folder if you have db issues when creating the database
-- NOTE: You'll have to namespace rails routes to api/v1 in order to view on NGINX server
 
 4. Add MUI and fonts by running the following:
 `dco run frontend npm install @mui/material @emotion/react @emotion/styled`
